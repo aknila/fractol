@@ -28,8 +28,6 @@
 # define SIZE_X 700
 # define SIZE_Y 700
 # define ITERAMAX 50
-// # define NBR_XC 5
-// # define NBR_YC -5
 
 typedef struct	s_img
 {
@@ -40,19 +38,30 @@ typedef struct	s_img
 	int			end;
 }				t_img;
 
-typedef struct 		s_ptr
+typedef struct	s_pnt
 {
-	void 		*mlx;
+	long double x;
+	long double y;
+	long double xc;
+	long double yc;
+}				t_pnt;
+
+typedef struct	s_ptr
+{
+	void		*mlx;
 	void		*win;
 	int			size_x;
 	int			size_y;
 	int			fract;
 	int			iteramax;
+	int			color;
 	float		h;
 	int			v;
 	float		max;
 	long double	xc;
 	long double	yc;
+	long double px;
+	long double py;
 	long double	xs;
 	long double	ys;
 	long double x1;
@@ -61,25 +70,33 @@ typedef struct 		s_ptr
 	long double y2;
 	long double x;
 	long double y;
+	long double verti;
+	long double hori;
 	int			a;
 	int			i;
 	t_img		*img;
-}					t_ptr;
+}				t_ptr;
 
-int		main(int argc, char **argv);
-// int		main(void);
-void	fl_aff_main(char *fractname);
-void	fl_aff_fract(t_ptr *ptr);
-// int		fl_nbr_itera(double xc, double yc, t_ptr *ptr);
-int		fl_nbr_itera(long double xc, long double yc, t_ptr *ptr);
-int		ft_sqrt(int nb);
-int		fl_set_fract(char *name);
-char	*fl_name(int fract);
-int		fl_error(int err);
-int		mouse_code(int x, int y, t_ptr *ptr);
-int		fl_close(t_ptr *ptr);
-int		fl_zoom(int button, float x, float y, t_ptr *ptr);
-char 	*ft_putprec(long double nbr);
-
+int				main(int argc, char **argv);
+void			fl_aff_main(char *fractname);
+void			fl_aff_fract(t_ptr *ptr);
+int				fl_nbr_itera(long double xc, long double yc, t_ptr *ptr);
+int				ft_sqrt(int nb);
+int				fl_set_fract(char *name);
+char			*fl_name(int fract);
+int				fl_error(int err);
+int				mouse_code1(int x, int y, t_ptr *ptr);
+int				mouse_code(int button, int x, int y, t_ptr *ptr);
+int				fl_close(t_ptr *ptr);
+int				fl_zoom1(long double x, long double y, t_ptr *ptr);
+int				fl_zoom2(long double x, long double y, t_ptr *ptr);
+char			*ft_putprec(long double nbr);
+void			fl_initialis(t_ptr	*ptr);
+int				fl_key_code(int kc, t_ptr *ptr);
+void			pix_put_img(t_ptr *ptr, int x, int y, int color);
+int				fl_key_code1(int kc, t_ptr *ptr);
+int				fl_key_code2(int kc, t_ptr *ptr);
+int				fl_calc_itera(t_pnt *pnt, t_ptr *ptr);
+void			ft_change_col(t_ptr *ptr, int i);
 
 #endif
