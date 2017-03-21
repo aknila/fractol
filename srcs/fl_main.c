@@ -53,7 +53,7 @@ int		fl_set_fract(char *name)
 
 int		main(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc < 2)
 		return (fl_error(1));
 	else
 	{
